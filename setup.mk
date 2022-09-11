@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 
 MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
-REPO_NAME := $(notdir $(patsubst %/,%,$(dir $(MAKEFILE_PATH))))
+REPO_NAME := isucon8-qualify-suburi-0910
 e:
 	echo $(MAKEFILE_DIR)
 	echo $(CURRENT_DIR)
@@ -40,6 +40,7 @@ setup/alp:
 	unzip alp.zip
 	sudo install alp /usr/local/bin/alp
 	rm -rf alp alp.zip
+	alp --version
 
 setup/graphviz:
 	sudo yum install -y graphviz
@@ -112,6 +113,7 @@ setup/fzf:
 setup/vim:
 	sudo yum install -y vim
 	echo 'inoremap jj <Esc>' >> .vimrc
+	vim --version
 
 setup/go:
 	curl -LO https://go.dev/dl/go1.19.1.linux-amd64.tar.gz
@@ -163,6 +165,7 @@ setup/init-git:
 	git commit -m "setup repo"
 
 setup/gh: /usr/bin/gh
+	gh --version
 	gh config set editor vim
 	gh config set git_protocol ssh
 	gh config set git_protocol ssh -h github.com
